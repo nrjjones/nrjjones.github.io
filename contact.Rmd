@@ -1,0 +1,9 @@
+---
+title: "contact"
+output: html_document
+---
+
+Contact page
+
+Nathan R. Jones
+nrjones@ssc.wisc.edu
