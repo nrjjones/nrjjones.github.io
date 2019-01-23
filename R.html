@@ -388,10 +388,13 @@ div.tocify {
   <a href="R.html">o[R]ientation</a>
 </li>
 <li>
+  <a href="org.html">o[R]ganization</a>
+</li>
+<li>
   <a href="stata.html">Stata [R]osetta Stone</a>
 </li>
 <li>
-  <a href="viz.html">Visualization</a>
+  <a href="http://github.com/nrjjones/BuildingContextualData">Building Contextual Data</a>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -445,97 +448,6 @@ div.tocify {
 <p><a href="https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects">Projects</a> are useful for creating a new space for your work. Think of it like a blank sheet of paper or, for more involved tasks, maybe a clean and stocked operating room. The working directory is automatically set to the project’s top level folder, and a .Rproj file can store information about your project.</p>
 <p>If you are coming from Stata, you may be used to setting working directories to access and save files around your local or networked file structure. You can do that with R too using a command <em>setwd()</em>, but the R community considers this <a href="https://cdn-images-1.medium.com/max/1600/1*fmEQAQ7H_cqAzwOPCIhv8w.png">bad manners</a>. They prefer to organize data, code, and tasks within a project-level directory for easier collaboration. This approach may be easier to adapt for newer, unaffiliated researchers who work with smaller and more portable data and harder for those who work on larger, collaborative projects that keep data in a single place.</p>
 <p><a href="https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-change-part-1/">RStudio presentation about Projects</a></p>
-</div>
-<div id="folder-structure-template" class="section level1">
-<h1>Folder structure template</h1>
-<p>When starting a task, a simple workflow is to create a project in RStudio, start version control (git), and add a basic folder structure.</p>
-<p>For simple projects, I include a single R code file, a README, and three folders: <strong>raw</strong>, <strong>out</strong>, and <strong>pst</strong>. The R code file has at least 3 parts: loading data, doing things, and saving output with comments for each step or task. The README has a narrative, simplified summary of what I am doing to complement more detailed comments in the code file.</p>
-<p><strong>/raw</strong> holds original data files. These are the files people send you or you download from the internet or you enter by hand with whatever mad name you received them with. Ever get one like this?</p>
-<p><em>Address File for Nathan 3-2-2015 v3 FINAL pbsmith extra edits - SEND THIS ONE.xlsx</em></p>
-<p>It will be tempting to rename it something sane like <em>Smith Sample.xlsx</em>, but will you remember the original file name in 2 years when you have to find it in your email? If you have the ability, consider making this folder read-only after you have moved all the files you need for the project so you don’t accidentally <em>just fix this one little thing</em> that will go undocumented and then break the code when Smith sends <em>…SEND THIS ONE v2.xlsx</em>.</p>
-<p><strong>/out</strong> holds any file you create. For example, a raw file with a sane name, data with some numeric variables cleaned up that were misread as characters, a merged survey data and adminstrative file, or a de-identified file to distribute to a PI’s research assistant. Files in <strong>/out</strong> should be produced from files in the <strong>/raw</strong> folder completely by code and considered disposable, so they do not need version numbers or date stamps. Sound dangerous?</p>
-<p><strong>/pst</strong> holds versions of files stored in <strong>/out</strong> that have been distributed to others. When you send a file to your research partner, you should copy files from <strong>/out</strong> to a date stamped folder in <strong>/pst</strong> and rename them with a date stamp and then zip the folder. <strong>/pst</strong> should hold only zipped folders with date stamped code and data files. If your partner asks questions a month after you send a file, you can use version control to investigate how the code that produced the file you sent differs from your current code.</p>
-<div id="the-basic-file-structure" class="section level2">
-<h2>The basic file structure</h2>
-<table>
-<thead>
-<tr class="header">
-<th>Item</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>README</td>
-<td>Essential info about the project</td>
-</tr>
-<tr class="even">
-<td>code.R</td>
-<td>All steps for loading data, cleaning, analysis, and output</td>
-</tr>
-<tr class="odd">
-<td>/raw</td>
-<td>Folder for raw data, never altered</td>
-</tr>
-<tr class="even">
-<td>/out</td>
-<td>Folder for altered data and other output</td>
-</tr>
-<tr class="odd">
-<td>/pst</td>
-<td>Folder for data or other output sent to others</td>
-</tr>
-</tbody>
-</table>
-<p>For more complex projects, you might add a documentation folder (doc) and a makefile that runs several smaller R programs stored in /R.</p>
-<table>
-<thead>
-<tr class="header">
-<th>Item</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>README</td>
-<td>Essential info about the project</td>
-</tr>
-<tr class="even">
-<td>makefile.R</td>
-<td>Code to run programs in **/R folder in order</td>
-</tr>
-<tr class="odd">
-<td>/R</td>
-<td>Folder for LoadData.R, CleanData.R, Analysis.R, Report.Rmd</td>
-</tr>
-<tr class="even">
-<td>/raw</td>
-<td>Folder for raw data exactly as you received it</td>
-</tr>
-<tr class="odd">
-<td>/out</td>
-<td>Folder for altered data and other output</td>
-</tr>
-<tr class="even">
-<td>/pst</td>
-<td>Folder for data or other output sent to others</td>
-</tr>
-<tr class="odd">
-<td>/doc</td>
-<td>Folder for documentation, codebooks, etc</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div>
-<div id="collaboration" class="section level1">
-<h1>Collaboration</h1>
-<p>RStudio includes integration with many collaboration tools like Git and Github.</p>
-<div id="git-and-github" class="section level2">
-<h2>Git and Github</h2>
-<p>An excellent conceptual introduction and set up guide by Jenny Bryan - <a href="http://happygitwithr.com/">Happy Git and GitHub for the useR</a></p>
-<p>A webinar on using these tools from RStudio - <a href="https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/">Managing Change in RStudio</a></p>
-</div>
 </div>
 
 

@@ -1,0 +1,62 @@
+---
+title: " "
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: 
+        collapsed: false
+---
+
+# Strive for complete documentation
+
+Your collaborators will appreicate your efforts to document every step of data cleaning, why you made analytical decisions, and how well organized your output is, but your most thankful collaborator will be you in 2 years.  
+
+# Folder structure to help you stay organized
+
+When starting a task, a simple workflow is to create a project in RStudio, start version control, and add a basic folder structure.  
+
+For simple projects, I include a single R code file, a README, and three folders: **raw**, **out**, and **pst**.  The R code file has at least 3 parts: loading data, doing things, and saving output with comments for each step or task.  The README has a narrative, simplified summary of what I am doing to complement more detailed comments in the code file.  
+
+**/raw** holds original data files.  These are the files people send you or you download from the internet or you enter by hand with whatever mad name you received them with.  Ever get one like this?  
+
+*Address File for Nathan 3-2-2015 v3 FINAL smith extra edits - SEND THIS ONE.xlsx*  
+
+It will be tempting to rename it something sane like *Smith Sample.xlsx*, but will you remember the original file name in 2 years when you have to find it in your email?  If you have the ability, consider making this folder read-only after you have moved all the files you need for the project so you don't accidentally *just fix this one little thing* that will go undocumented and then break the code when Smith sends *...SEND THIS ONE v2.xlsx*.    
+
+**/out** holds any file you create. For example, a raw file with a sane name, data with some numeric variables cleaned up that were misread as characters, a merged survey data and adminstrative file, or a de-identified file to distribute to a PI's research assistant.  Files in **/out** should be produced from files in the **/raw** folder completely by code and considered disposable, so they do not need version numbers or date stamps.  Sound dangerous?  Read on...
+
+**/pst** holds versions of files stored in **/out** that have been distributed to others.  When you send a file to your research partner, you should copy files from **/out** to a date stamped folder in **/pst** and rename them with a date stamp and then zip the folder.  **/pst** should hold only zipped folders with date stamped code and data files.  If your partner asks questions a month after you send a file, you can use version control to investigate how the code that produced the file you sent differs from your current code.  
+
+## The basic file structure
+
+|Item   | Description  |  
+|-------|------------------------------------------------|  
+|README | Essential info about the project  |  
+|code.R | All steps for loading data, cleaning, analysis, and output|  
+|  /raw | Folder for raw data, never altered|  
+|  /out | Folder for altered data and other output|  
+|  /pst | Folder for data or other output sent to others|  
+
+For more complex projects, you might add a documentation folder (doc) and a makefile that runs several smaller R programs stored in /R.  
+
+|Item       | Description  |  
+|-----------|------------------------------------------------|  
+|README     | Essential info about the project  |  
+|makefile.R | Code to run programs in **/R folder in order |  
+|  /R       | Folder for LoadData.R, CleanData.R, Analysis.R, Report.Rmd |  
+|  /raw     | Folder for raw data exactly as you received it |  
+|  /out     | Folder for altered data and other output |  
+|  /pst     | Folder for data or other output sent to others |  
+|  /doc     | Folder for documentation, codebooks, etc |  
+
+# Collaboration
+
+RStudio includes integration with many collaboration tools like Git and Github.  
+
+## Git and Github
+
+An excellent conceptual introduction and set up guide by Jenny Bryan - [Happy Git and GitHub for the useR](http://happygitwithr.com/)
+
+A webinar on using these tools from RStudio - [Managing Change in RStudio](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/)
+
