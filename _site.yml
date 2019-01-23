@@ -2,12 +2,16 @@ name: "Nathan R Jones"
 navbar:
   title: "Nathan R Jones"
   left:
-    - text: "R"
+    - text: "o[R]ientation"
       href: R.html
+    - text: "Stata [R]osetta Stone"
+      href: stata.html
     - text: "Visualization"
       href: viz.html
     - text: "About"
       href: about.html
+    - text: "CV"
+      href: cv.html
   right:
     - icon: fa-envelope fa-lg
       href: contact.html
@@ -15,4 +19,4 @@ navbar:
       href: http://github.com/nrjjones  
 output:
   html_document:
-    theme: lumen
+    theme: yeti

@@ -1,0 +1,74 @@
+---
+title: " "
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: 
+        collapsed: false
+---
+
+# Stata Rosetta Stone
+
+It takes time to start thinking like an R programmer instead of a Stata programmer.  This section shows how to do some common Stata tasks using R.  
+
+# Working with data
+
+Unlike Stata, you can have multiple datasets open at the same time in R.  Unfortunately, this flexibily requires you to explicitly state where the variables are every time you use them.  For example, if you have a sample file with personal information and another data file with survey responses, you might load both data files with the names **sample** and **survey**.  If you have linking variable in both call **ID**, you could do things with either by typing **sample\$ID** or **survey\$ID**.    
+
+In addition to their names, you can access variables by their column number.  For example, if ID is the first variable in both data files, you could type **sample[1]** or **survey[1]** instead of the **\$ID** format used above.  You can also use quoted variable names in brackets if the variable names use spaces, for example, **sample['street address line 1']**.
+
+If you are only using one data file for your project, most of the R world finds it convenient to use the abbreviation **df**, short for dataframe, for the main data file.  It is two very easy letters to type.  If you need to load multiple data files, use the shortest reference name you can to reduce your typing burden.  For example, you can save lots of extra typing by using **sur** instead of **survey** and **sam** instead of **sample** if you code is longer than a few lines.  
+
+## IF statements
+
+Stata code requires IF statements after the action.  For example: 
+
+>   replace state = "GA" if state == "Georgia"
+
+R has a convention of putting the condition in brackets attached to the dataframe and variable name.  The following code can be interpreted as 'For the variable **state** in the dataframe **df**, when the variable **state** in **df** equals "Georgia", replace the value with "GA".   
+
+```{r, eval=FALSE}
+   df$state[df$state=="Georgia"] <- "GA"  
+```
+
+An example with more complex conditions:  
+
+```{r, eval=FALSE}
+   df$salutation[df$degree=="MD" | df$degree=="PhD"] <- "Dr. "  
+```
+
+## Recoding data
+
+If you need to do more complex recoding, use case_when() from dplyr:   
+
+```{r, eval=FALSE}
+df$state <- case_when(  
+    df$state == "Georgia" ~ GA,  
+    df$state == "Florida" ~ FL,  
+    df$state == "Wisconsin" ~ WI,  
+    df$state == "Wyoming" ~ WY,  
+    )
+```
+   
+## Loops
+
+Placeholder for vectorized apply vs for loop
+
+Placeholder for get() to approximate for loop functionality
+   
+# Merging data
+
+Placeholder for:
+
+- left_join()  
+- full_join()  
+- anti_join()  
+
+## Long to wide
+
+Placeholder for spread()
+
+## Wide to long
+
+Placeholder for gather()

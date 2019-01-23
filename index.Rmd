@@ -1,6 +1,5 @@
 ---
-title: "Website"
+title: " "
 output: html_document
 ---
 
-This is a website

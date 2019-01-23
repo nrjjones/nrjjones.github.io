@@ -1,9 +1,13 @@
 ---
-title: "contact"
+title: "Contact Information"
 output: html_document
 ---
 
-Contact page
+**Nathan R. Jones, PhD**  
+Senior Project Director  
+University of Wisconsin Survey Center (UWSC)  
+4418 Sterling Hall  
+475 N Charter St   
+Madison, WI  53706-1582  
+Office: 608-890-4724  
 
-Nathan R. Jones
-nrjones@ssc.wisc.edu
