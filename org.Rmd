@@ -10,7 +10,7 @@ output:
 
 # Strive for complete documentation
 
-Your collaborators will appreicate your efforts to document every step of data cleaning, why you made analytical decisions, and how well organized your output is, but your most thankful collaborator will be you in 2 years.  
+Your collaborators will appreicate your efforts to document every step of data cleaning, why you made analytical decisions, and how you organized your output, but your most thankful collaborator will be you in 2 years.  
 
 # Folder structure to help you stay organized
 
@@ -43,7 +43,7 @@ For more complex projects, you might add a documentation folder (doc) and a make
 |Item       | Description  |  
 |-----------|------------------------------------------------|  
 |README     | Essential info about the project  |  
-|makefile.R | Code to run programs in **/R folder in order |  
+|makefile.R | Code to run programs in **/R** folder in order |  
 |  /R       | Folder for LoadData.R, CleanData.R, Analysis.R, Report.Rmd |  
 |  /raw     | Folder for raw data exactly as you received it |  
 |  /out     | Folder for altered data and other output |  
@@ -52,7 +52,7 @@ For more complex projects, you might add a documentation folder (doc) and a make
 
 # Collaboration
 
-RStudio includes integration with many collaboration tools like Git and Github.  
+RStudio includes integration with many collaboration tools like Git and Github.  Git is a 
 
 ## Git and Github
 
