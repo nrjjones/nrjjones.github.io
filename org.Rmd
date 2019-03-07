@@ -43,7 +43,7 @@ For more complex projects, you might add a documentation folder (doc) and a make
 |Item       | Description  |  
 |-----------|------------------------------------------------|  
 |README     | Essential info about the project  |  
-|makefile.R | Code to run programs in **/R** folder in order |  
+|makefile.R | Code to run programs in */R* folder in order |  
 |  /R       | Folder for LoadData.R, CleanData.R, Analysis.R, Report.Rmd |  
 |  /raw     | Folder for raw data exactly as you received it |  
 |  /out     | Folder for altered data and other output |  

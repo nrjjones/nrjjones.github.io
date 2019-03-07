@@ -53,21 +53,28 @@ df$state <- case_when(
     )
 ```
    
-## Loops
+# Loops
 
-### Vectorized apply vs for loop
+## Vectorized apply vs for loop
 
-Stata users are very familiar with a range of loop functions (for, foreach, forval, etc).  For loops are relatively easy to 
+Stata users are very familiar with a range of loop functions (for, foreach, forval, etc).  For loops tend to be slower than 
+
+Some resources: 
+
+- [A Tutorial on Loops in R](https://www.datacamp.com/community/tutorials/tutorial-on-loops-in-r)  
+- [Vectorization in R: Why?](http://www.noamross.net/blog/2014/4/16/vectorization-in-r--why.html)  
+- [Let's talk about vectorization](http://alyssafrazee.com/2014/01/29/vectorization.html)  
+- [Loops in R](https://swcarpentry.github.io/r-novice-inflammation/15-supp-loops-in-depth/)  
 
 Placeholder for get() to approximate for loop functionality
    
 # Merging data
 
-Placeholder for:
+**full_join() ** - similar to merge, but no _merge variable is created.  Consider installing **tidylog** or running your own checks to produce a variable similar _merge  
 
-- left_join()  
-- full_join()  
-- anti_join()  
+**left_join() ** - similar to merge, then keep the _merge==3 
+
+**anti_join() ** - similar to merge, then keep the _merge==1  | _merge==2
 
 ## Long to wide
 
