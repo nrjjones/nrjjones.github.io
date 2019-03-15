@@ -435,9 +435,9 @@ div.tocify {
 </div>
 <div id="working-with-data-in-general" class="section level1">
 <h1>Working with data in general</h1>
-<p>Unlike Stata, you can have multiple datasets open at the same time in R. Unfortunately, this flexibily requires you to explicitly state where the variables are every time you use them. For example, if you have a sample file with personal information and another data file with survey responses, you might load both data files with the names <strong>sample</strong> and <strong>survey</strong>. If you have linking variable in both call <strong>ID</strong>, you could do things with either by typing <strong>sample$ID</strong> or <strong>survey$ID</strong>.</p>
-<p>In addition to their names, you can access variables by their column number. For example, if ID is the first variable in both data files, you could type <strong>sample[1]</strong> or <strong>survey[1]</strong> instead of the <strong>$ID</strong> format used above. You can also use quoted variable names in brackets if the variable names use spaces, for example, <strong>sample[‘street address line 1’]</strong>.</p>
-<p>If you are only using one data file for your project, most of the R world finds it convenient to use the abbreviation <strong>df</strong>, short for dataframe, for the main data file. It is two very easy letters to type. If you need to load multiple data files, use the shortest reference name you can to reduce your typing burden. For example, you can save lots of extra typing by using <strong>sur</strong> instead of <strong>survey</strong> and <strong>sam</strong> instead of <strong>sample</strong> if your code is longer than a few lines.</p>
+<p>Unlike Stata, you can have multiple datasets open at the same time in R. Unfortunately, this flexibily requires you to state <em>explicitly</em> where the variables are every time you use them. For example, if you have a sample file with personal information and another data file with survey responses, you might load both data files with the names <strong>sample</strong> and <strong>survey</strong>. If you have linking variable in both called <strong>ID</strong>, you refer to them with the data frame name then a dollar sign ($) and then the variable like this: <strong>sample$ID</strong> or <strong>survey$ID</strong>.</p>
+<p>In addition to their names, you can access variables by their column number in brackets. For example, if ID is the first column in both data files, you could type <strong>sample[1]</strong> or <strong>survey[1]</strong> instead of the <strong>$ID</strong> format used above. You can also use quoted variable names in brackets if the variable name has spaces, for example, <strong>sample[‘street address line 1’]</strong>.</p>
+<p>If you are only using one data file for your project, most of the R world finds it convenient to use the abbreviation <strong>df</strong>, short for <em>dataframe</em>, for the main data file. If you need to load multiple data files, use the shortest reference name you can to reduce your typing burden. For example, you can save some extra typing by using <strong>sur</strong> instead of <strong>survey</strong> and <strong>sam</strong> instead of <strong>sample</strong>.</p>
 </div>
 <div id="recoding-data" class="section level1">
 <h1>Recoding data</h1>
@@ -450,7 +450,7 @@ div.tocify {
 <p>R has a convention of putting the condition in brackets attached to the dataframe and variable name. The following code can be interpreted as ’For the variable <strong>state</strong> in the dataframe <strong>df</strong>, when the variable <strong>state</strong> in <strong>df</strong> equals “Georgia”, replace the value with “GA”.</p>
 <pre class="r"><code>   df$state[df$state==&quot;Georgia&quot;] &lt;- &quot;GA&quot;  </code></pre>
 <p>An example with more more than one condition:</p>
-<pre class="r"><code>   df$salutation[df$degree==&quot;MD&quot; | df$degree==&quot;PhD&quot;] &lt;- &quot;Dr. &quot;  </code></pre>
+<pre class="r"><code>   df$salutation[df$md_degree==&quot;Yes&quot; | df$educ==&quot;PhD&quot;] &lt;- &quot;Dr. &quot;  </code></pre>
 </div>
 <div id="complex-recoding-data" class="section level2">
 <h2>Complex recoding data</h2>
@@ -467,7 +467,7 @@ div.tocify {
 <h1>Loops</h1>
 <div id="vectorized-apply-vs-for-loop" class="section level2">
 <h2>Vectorized apply vs for loop</h2>
-<p>Stata users are very familiar with a range of loop functions (for, foreach, forval, etc). For loops tend to be slower than</p>
+<p>Stata users are very familiar with a range of loop functions (foreach, forval, etc). You can write loops in R, but some problems that loops solve in Stata are better handled by vectorized code in R.</p>
 <p>Some resources:</p>
 <ul>
 <li><a href="https://www.datacamp.com/community/tutorials/tutorial-on-loops-in-r">A Tutorial on Loops in R</a><br />
@@ -483,16 +483,58 @@ div.tocify {
 </div>
 <div id="merging-data" class="section level1">
 <h1>Merging data</h1>
-<p><strong>full_join() </strong> - similar to merge, but no _merge variable is created. Consider installing <strong>tidylog</strong> or running your own checks to produce a variable similar _merge</p>
-<p><strong>left_join() </strong> - similar to merge, then keep the _merge==3</p>
-<p><strong>anti_join() </strong> - similar to merge, then keep the _merge==1 | _merge==2</p>
-<div id="long-to-wide" class="section level2">
-<h2>Long to wide</h2>
-<p>Placeholder for spread()</p>
+<ul>
+<li><p><strong>full_join() </strong> - similar to merge, but no _merge variable is created. Consider installing <strong>tidylog</strong> or running your own checks to produce a variable similar _merge</p></li>
+<li><p><strong>left_join() </strong> - similar to merge, then keep the _merge==3</p></li>
+<li><p><strong>anti_join() </strong> - similar to merge, then keep the _merge==1 | _merge==2</p></li>
+</ul>
+<div id="reshaping-data" class="section level2">
+<h2>Reshaping Data</h2>
+<p>Many of R’s popular graphing and mapping tools prefer data to be in long format. Hadley Wickham has <a href="https://vita.had.co.nz/papers/tidy-data.pdf">written eloquently</a> about why long data, or <em>tidy</em> data, has many advantages. If you frequently work with social science data files that tend to be stored in wide files, Knowing how to reshape your data is an essential skill.</p>
+<div id="wide-to-long" class="section level3">
+<h3>Wide to long</h3>
+<p>See <a href="https://stats.idre.ucla.edu/stata/modules/reshaping-data-wide-to-long/">here</a> for a good example of reshaping wide data to long format.</p>
+<p>Wide format</p>
+<pre class="r"><code>id      inc96      inc97      inc98   
+1003    75000      76000      77000    
+1004    40000      40500      41000    
+1005    45000      45400      45800    </code></pre>
+<p>Long format</p>
+<pre class="r"><code>id        year    inc 
+1003      96      40000  
+1003      97      40500  
+1003      98      41000  
+1004      96      45000  
+1004      97      45400  
+1004      98      45800  
+1005      96      75000  
+1005      97      76000  
+1005      98      77000 </code></pre>
+<p>Stata’s reshape command</p>
+<p>Stata parses the variable name to separate inc97 into the year and the income value.</p>
+<pre class="r"><code>reshape long inc, i(id) j(year) </code></pre>
+<p>gather() from the <strong>tidyr</strong> package works very similarly, but leaves the value of year as inc97, etc. You can change these to a year value after.</p>
+<pre class="r"><code>df_long &lt;- gather(df, year, inc, -id)
+
+# To leave 96, but as a character variable
+df_long &lt;- str_remove(df_long$year, &quot;inc&quot;)
+
+# To leave 96 as a number
+df_long &lt;- as.numeric(str_remove(df_long$year, &quot;inc&quot;)) 
+
+# To leave 1996 as a number
+df_long &lt;- as.numeric(str_remove(df_long$year, &quot;inc&quot;))+1900 </code></pre>
 </div>
-<div id="wide-to-long" class="section level2">
-<h2>Wide to long</h2>
-<p>Placeholder for gather()</p>
+<div id="long-to-wide" class="section level3">
+<h3>Long to wide</h3>
+<p>Stata</p>
+<pre class="r"><code>reshape wide age, i(id)  j(year) </code></pre>
+<p>spread() from the tidyr package</p>
+<pre class="r"><code>df_wide &lt;- spread(df_long, year, inc)
+
+# But this leaves the column names as 96, 97, 98. To rename:
+names(df_wide) &lt;- c(&quot;id&quot;, &quot;inc96&quot;, &quot;inc97&quot;, &quot;inc98&quot;)</code></pre>
+</div>
 </div>
 </div>
 
