@@ -373,6 +373,8 @@ div.tocify {
 </div>
 
 
+<div id="toy-example" class="section level1">
+<h1>Toy example</h1>
 <p>The most challenging thing about writing functions in R is the concept of scoping and environments, mostly meaning what things are called and where they are stored. Many, many tutorials and examples are written by stats or math people or programmers who don’t use typical social science data. So you see these toy examples like <a href="https://www.tutorialspoint.com/r/r_functions.htm" class="uri">https://www.tutorialspoint.com/r/r_functions.htm</a></p>
 <pre class="r"><code>    # Create a function with arguments.
     new.function &lt;- function(a,b,c) {
@@ -385,6 +387,9 @@ div.tocify {
 <p>So simple! But nobody we work with needs or writes functions like that. With structured data, functions are harder to write because R doesn’t want you to make a mistake by referring to something in a different scope or environment. It used to be very ugly to code functions with our kind of data, but fairly recently, the tidyverse people came up with using double curly brackets to make it less ugly.</p>
 <p><a href="https://stackoverflow.com/questions/64065003/how-do-double-curly-brackets-work-in-dplyr" class="uri">https://stackoverflow.com/questions/64065003/how-do-double-curly-brackets-work-in-dplyr</a></p>
 <p>One commenter covers hours of frustration: Ronak, so the {{}} is used to replace the enquo() and !! operators? Hopefully you’ll never have to know what that means, but if you are curious, this explains: <a href="https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/" class="uri">https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/</a></p>
+</div>
+<div id="double-curly-brackets" class="section level1">
+<h1>Double curly brackets</h1>
 <p>How does this look in practice? Here’s a function I wrote to create nice looking crosstabs:</p>
 <pre class="r"><code>    ctab &lt;- function(x,y) {
 
@@ -465,6 +470,9 @@ div.tocify {
       return(tmp2)
     }</code></pre>
 <p>The function would be called with ctab(df3, Q5, Q12r), ctab(df4, Q5, Q12r), etc to use on a specific data file.</p>
+</div>
+<div id="using-functions-with-functions-and-loops" class="section level1">
+<h1>Using functions with functions and loops</h1>
 <p>And you can also call your function from other functions. Or you can use a loop to cycle through a bunch of variables. The following would print the function for all variables from the 2nd to the end in data file df (make Q12r the first variable so you don’t get a Q12r by Q12r line).</p>
 <pre class="r"><code>    for(i in 2:length(df)) {
       tmp &lt;- paste0(&quot;ctab(df2, &quot;, names(df)[i], &quot;, Q12r)&quot;)
@@ -498,12 +506,16 @@ ctab(df, Q9, Q12r) </code></pre>
 <pre><code>ctab(df, Q5, Q12r)</code></pre>
 </blockquote>
 <p>Last thing, there is a thing called Extract Function in the Code menu. In theory, you should be able to highlight a few lines of code that do something useful and it will just rewrite the code as a function. It works pretty well, but usually you would end up reorganizing your initial approach to write a function anyway, so I don’t find it too helpful.</p>
+</div>
+<div id="resources" class="section level1">
+<h1>Resources</h1>
 <p>Reasonably accessible<br />
 <a href="https://dplyr.tidyverse.org/articles/programming.html" class="uri">https://dplyr.tidyverse.org/articles/programming.html</a></p>
 <p>More details on the {{ }} functionality<br />
 <a href="https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/" class="uri">https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/</a></p>
 <p>Hadley’s function section - Still too complex for me<br />
 <a href="https://r4ds.had.co.nz/functions.html" class="uri">https://r4ds.had.co.nz/functions.html</a></p>
+</div>
 
 
 

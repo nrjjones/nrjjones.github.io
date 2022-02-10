@@ -8,6 +8,8 @@ output:
         collapsed: false
 ---
 
+# Toy example 
+
 The most challenging thing about writing functions in R is the concept of scoping and environments, mostly meaning what things are called and where they are stored.  Many, many tutorials and examples are written by stats or math people or programmers who don't use typical social science data.  So you see these toy examples like https://www.tutorialspoint.com/r/r_functions.htm
 
 ```{r, eval=FALSE}
@@ -26,6 +28,8 @@ So simple!  But nobody we work with needs or writes functions like that.  With s
 https://stackoverflow.com/questions/64065003/how-do-double-curly-brackets-work-in-dplyr
 
 One commenter covers hours of frustration: Ronak, so the {{}} is used to replace the enquo() and !! operators?  Hopefully you'll never have to know what that means, but if you are curious, this explains: https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/
+
+# Double curly brackets 
 
 How does this look in practice?  Here's a function I wrote to create nice looking crosstabs:
 
@@ -86,6 +90,8 @@ That function is a little quick and dirty because it assumes you always want to 
 
 The function would be called with ctab(df3, Q5, Q12r), ctab(df4, Q5, Q12r), etc to use on a specific data file. 
 
+# Using functions with functions and loops
+
 And you can also call your function from other functions.  Or you can use a loop to cycle through a bunch of variables.  The following would print the function for all variables from the 2nd to the end in data file df (make Q12r the first variable so you don't get a Q12r by Q12r line).  
 
 ```{r, eval=FALSE}
@@ -135,6 +141,8 @@ Output:
 
 
 Last thing, there is a thing called Extract Function in the Code menu.  In theory, you should be able to highlight a few lines of code that do something useful and it will just rewrite the code as a function.  It works pretty well, but usually you would end up reorganizing your initial approach to write a function anyway, so I don't find it too helpful. 
+
+# Resources
 
 Reasonably accessible  
 https://dplyr.tidyverse.org/articles/programming.html
