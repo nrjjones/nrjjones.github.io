@@ -386,7 +386,7 @@ div.tocify {
     new.function(5,3,11)</code></pre>
 <p>So simple! But nobody we work with needs or writes functions like that. With structured data, functions are harder to write because R doesn’t want you to make a mistake by referring to something in a different scope or environment. It used to be very ugly to code functions with our kind of data, but fairly recently, the tidyverse people came up with using double curly brackets to make it less ugly.</p>
 <p><a href="https://stackoverflow.com/questions/64065003/how-do-double-curly-brackets-work-in-dplyr" class="uri">https://stackoverflow.com/questions/64065003/how-do-double-curly-brackets-work-in-dplyr</a></p>
-<p>One commenter covers hours of frustration: Ronak, so the {{}} is used to replace the enquo() and !! operators? Hopefully you’ll never have to know what that means, but if you are curious, this explains: <a href="https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/" class="uri">https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/</a></p>
+<p>One commenter covers hours of frustration: <em>Ronak, so the {{}} is used to replace the enquo() and !! operators?</em> Hopefully you’ll never have to know what that means, but if you are curious, this explains: <a href="https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/" class="uri">https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/</a></p>
 </div>
 <div id="double-curly-brackets" class="section level1">
 <h1>Double curly brackets</h1>
@@ -469,7 +469,7 @@ div.tocify {
 
       return(tmp2)
     }</code></pre>
-<p>The function would be called with ctab(df3, Q5, Q12r), ctab(df4, Q5, Q12r), etc to use on a specific data file.</p>
+<p>The function would be called with ctab(<strong>df3</strong>, Q5, Q12r), ctab(<strong>df4</strong>, Q5, Q12r), etc to use on a specific data file.</p>
 </div>
 <div id="using-functions-with-functions-and-loops" class="section level1">
 <h1>Using functions with functions and loops</h1>

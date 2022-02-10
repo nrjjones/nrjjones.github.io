@@ -27,7 +27,7 @@ So simple!  But nobody we work with needs or writes functions like that.  With s
 
 https://stackoverflow.com/questions/64065003/how-do-double-curly-brackets-work-in-dplyr
 
-One commenter covers hours of frustration: Ronak, so the {{}} is used to replace the enquo() and !! operators?  Hopefully you'll never have to know what that means, but if you are curious, this explains: https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/
+One commenter covers hours of frustration: *Ronak, so the {{}} is used to replace the enquo() and !! operators?*  Hopefully you'll never have to know what that means, but if you are curious, this explains: https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/
 
 # Double curly brackets 
 
@@ -88,7 +88,7 @@ That function is a little quick and dirty because it assumes you always want to 
     }
 ```
 
-The function would be called with ctab(df3, Q5, Q12r), ctab(df4, Q5, Q12r), etc to use on a specific data file. 
+The function would be called with ctab(**df3**, Q5, Q12r), ctab(**df4**, Q5, Q12r), etc to use on a specific data file. 
 
 # Using functions with functions and loops
 
