@@ -9,6 +9,8 @@ navbar:
       href: org.html
     - text: "Stata [R]osetta Stone"
       href: stata.html
+    - text: "R Functions"
+      href: rfunc.html
     - text: "Building Contextual Data"
       href: http://github.com/nrjjones/BuildingContextualData
     - text: "About"

@@ -11,7 +11,7 @@
 
 
 
-<title>stata.knit</title>
+<title>rfunc.knit</title>
 
 <script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
@@ -373,114 +373,137 @@ div.tocify {
 </div>
 
 
-<div id="stata-rosetta-stone" class="section level1">
-<h1>Stata Rosetta Stone</h1>
-<p>It takes time to start thinking like an R programmer instead of a Stata programmer. This section shows how to do some common Stata tasks using R.</p>
-</div>
-<div id="working-with-data-in-general" class="section level1">
-<h1>Working with data in general</h1>
-<p>Unlike Stata, you can have multiple datasets open at the same time in R. Unfortunately, this flexibily requires you to state <em>explicitly</em> where the variables are every time you use them. For example, if you have a sample file with personal information and another data file with survey responses, you might load both data files with the names <strong>sample</strong> and <strong>survey</strong>. If you have linking variable in both called <strong>ID</strong>, you refer to them with the data frame name then a dollar sign ($) and then the variable like this: <strong>sample$ID</strong> or <strong>survey$ID</strong>.</p>
-<p>In addition to their names, you can access variables by their column number in brackets. For example, if ID is the first column in both data files, you could type <strong>sample[1]</strong> or <strong>survey[1]</strong> instead of the <strong>$ID</strong> format used above. You can also use quoted variable names in brackets if the variable name has spaces, for example, <strong>sample[‘street address line 1’]</strong>.</p>
-<p>If you are only using one data file for your project, most of the R world finds it convenient to use the abbreviation <strong>df</strong>, short for <em>dataframe</em>, for the main data file. If you need to load multiple data files, use the shortest reference name you can to reduce your typing burden. For example, you can save some extra typing by using <strong>sur</strong> instead of <strong>survey</strong> and <strong>sam</strong> instead of <strong>sample</strong>.</p>
-</div>
-<div id="recoding-data" class="section level1">
-<h1>Recoding data</h1>
-<div id="simple-recoding-and-if-statements" class="section level2">
-<h2>Simple recoding and IF statements</h2>
-<p>Stata code requires conditional statements after the action. For example:</p>
+<p>The most challenging thing about writing functions in R is the concept of scoping and environments, mostly meaning what things are called and where they are stored. Many, many tutorials and examples are written by stats or math people or programmers who don’t use typical social science data. So you see these toy examples like <a href="https://www.tutorialspoint.com/r/r_functions.htm" class="uri">https://www.tutorialspoint.com/r/r_functions.htm</a></p>
+<pre class="r"><code>    # Create a function with arguments.
+    new.function &lt;- function(a,b,c) {
+       result &lt;- a * b + c
+       print(result)
+    }
+
+    # Call the function by position of arguments.
+    new.function(5,3,11)</code></pre>
+<p>So simple! But nobody we work with needs or writes functions like that. With structured data, functions are harder to write because R doesn’t want you to make a mistake by referring to something in a different scope or environment. It used to be very ugly to code functions with our kind of data, but fairly recently, the tidyverse people came up with using double curly brackets to make it less ugly.</p>
+<p><a href="https://stackoverflow.com/questions/64065003/how-do-double-curly-brackets-work-in-dplyr" class="uri">https://stackoverflow.com/questions/64065003/how-do-double-curly-brackets-work-in-dplyr</a></p>
+<p>One commenter covers hours of frustration: Ronak, so the {{}} is used to replace the enquo() and !! operators? Hopefully you’ll never have to know what that means, but if you are curious, this explains: <a href="https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/" class="uri">https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/</a></p>
+<p>How does this look in practice? Here’s a function I wrote to create nice looking crosstabs:</p>
+<pre class="r"><code>    ctab &lt;- function(x,y) {
+
+      tmp &lt;- df %&gt;%
+        filter(!is.na({{x}}))
+
+      tmp &lt;- droplevels(tmp)
+
+      tmp2 &lt;- tabyl(tmp, {{x}}, {{y}}) %&gt;%
+        adorn_totals(c(&quot;col&quot;, &quot;row&quot;)) %&gt;%
+        adorn_percentages(&quot;col&quot;) %&gt;%
+        adorn_pct_formatting() %&gt;%
+        adorn_ns()
+
+      tmp2 &lt;- kable(tmp2)
+
+      return(tmp2)
+    }</code></pre>
+<p>This combines a little cleaning I wanted to do on a lot of variables (removing blanks, dropping unused factor levels so you don’t get a lot of 0s in the table) and uses a nice function tabyl() from the janitor package to add n/% and kable() to make a formatted table. You can now write crosstabs like this ctab(Q5, Q12r) where Q5 is some Yes/No question and Q12r is recoded categorical age and the output looks like this:</p>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Q5</th>
+<th align="left">&lt;14</th>
+<th align="left">14-16</th>
+<th align="left">17+</th>
+<th align="left">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Yes</td>
+<td align="left">94.7% (18)</td>
+<td align="left">88.2% (105)</td>
+<td align="left">96.4% (54)</td>
+<td align="left">91.2% (177)</td>
+</tr>
+<tr class="even">
+<td align="left">No</td>
+<td align="left">5.3% (1)</td>
+<td align="left">5.0% (6)</td>
+<td align="left">1.8% (1)</td>
+<td align="left">4.1% (8)</td>
+</tr>
+<tr class="odd">
+<td align="left">Unsure</td>
+<td align="left">0.0% (0)</td>
+<td align="left">6.7% (8)</td>
+<td align="left">1.8% (1)</td>
+<td align="left">4.6% (9)</td>
+</tr>
+<tr class="even">
+<td align="left">Total</td>
+<td align="left">100.0% (19)</td>
+<td align="left">100.0% (119)</td>
+<td align="left">100.0% (56)</td>
+<td align="left">100.0% (194)</td>
+</tr>
+</tbody>
+</table>
+<p>You could clean more by removing the Unsures from all tables that use this function by adding filter({{x}} != “Unsure” after the line that removes the missings, etc.</p>
+<p>That function is a little quick and dirty because it assumes you always want to do crosstabs using a data object called “df”. If you had 7 data files loaded and wanted to be able to make crosstabs with several in a report, you could add a parameter for the data name like this</p>
+<pre class="r"><code>    ctab &lt;- function(df, x, y) {
+
+      tmp &lt;- df %&gt;%
+        filter(!is.na({{x}}))
+
+      tmp &lt;- droplevels(tmp)
+
+      tmp2 &lt;- tabyl(tmp, {{x}}, {{y}}) %&gt;%
+        adorn_totals(c(&quot;col&quot;, &quot;row&quot;)) %&gt;%
+        adorn_percentages(&quot;col&quot;) %&gt;%
+        adorn_pct_formatting() %&gt;%
+        adorn_ns()
+
+      tmp2 &lt;- kable(tmp2)
+
+      return(tmp2)
+    }</code></pre>
+<p>The function would be called with ctab(df3, Q5, Q12r), ctab(df4, Q5, Q12r), etc to use on a specific data file.</p>
+<p>And you can also call your function from other functions. Or you can use a loop to cycle through a bunch of variables. The following would print the function for all variables from the 2nd to the end in data file df (make Q12r the first variable so you don’t get a Q12r by Q12r line).</p>
+<pre class="r"><code>    for(i in 2:length(df)) {
+      tmp &lt;- paste0(&quot;ctab(df2, &quot;, names(df)[i], &quot;, Q12r)&quot;)
+      cat(tmp, &quot;\n&quot;)
+    }</code></pre>
+<p>Gives you this:</p>
 <blockquote>
-<p>replace state = “GA” if state == “Georgia”</p>
+<pre><code>ctab(df, Q2, Q12r) 
+ctab(df, Q3, Q12r)
+ctab(df, Q4, Q12r)
+ctab(df, Q5, Q12r)
+ctab(df, Q6, Q12r)
+ctab(df, Q7, Q12r)
+ctab(df, Q8, Q12r)
+ctab(df, Q9, Q12r) </code></pre>
 </blockquote>
-<p>R has a convention of putting the condition in brackets attached to the dataframe and variable name. The following code can be interpreted as ’For the variable <strong>state</strong> in the dataframe <strong>df</strong>, when the variable <strong>state</strong> in <strong>df</strong> equals “Georgia”, replace the value with “GA”.</p>
-<pre class="r"><code>   df$state[df$state==&quot;Georgia&quot;] &lt;- &quot;GA&quot;  </code></pre>
-<p>An example with more more than one condition:</p>
-<pre class="r"><code>   df$salutation[df$md_degree==&quot;Yes&quot; | df$educ==&quot;PhD&quot;] &lt;- &quot;Dr. &quot;  </code></pre>
-</div>
-<div id="complex-recoding-data" class="section level2">
-<h2>Complex recoding data</h2>
-<p>If you need to do more complex recoding, use case_when() from dplyr:</p>
-<pre class="r"><code>df$state &lt;- case_when(  
-    df$state == &quot;Georgia&quot; ~ &quot;GA&quot;,  
-    df$state == &quot;Florida&quot; ~ &quot;FL&quot;,  
-    df$state == &quot;Wisconsin&quot; ~ &quot;WI&quot;,  
-    df$state == &quot;Wyoming&quot; ~ &quot;WY&quot;,  
-    )</code></pre>
-</div>
-</div>
-<div id="loops" class="section level1">
-<h1>Loops</h1>
-<div id="vectorized-apply-vs-for-loop" class="section level2">
-<h2>Vectorized apply vs for loop</h2>
-<p>Stata users are very familiar with a range of loop functions (foreach, forval, etc). You can write loops in R, but some problems that loops solve in Stata are better handled by vectorized code in R.</p>
-<p>Some resources:</p>
-<ul>
-<li><a href="https://www.datacamp.com/community/tutorials/tutorial-on-loops-in-r">A Tutorial on Loops in R</a><br />
-</li>
-<li><a href="http://www.noamross.net/blog/2014/4/16/vectorization-in-r--why.html">Vectorization in R: Why?</a><br />
-</li>
-<li><a href="http://alyssafrazee.com/2014/01/29/vectorization.html">Let’s talk about vectorization</a><br />
-</li>
-<li><a href="https://swcarpentry.github.io/r-novice-inflammation/15-supp-loops-in-depth/">Loops in R</a></li>
-</ul>
-<p>Placeholder for get() to approximate for loop functionality</p>
-</div>
-</div>
-<div id="merging-data" class="section level1">
-<h1>Merging data</h1>
-<ul>
-<li><p><strong>full_join() </strong> - similar to merge, but no _merge variable is created. Consider installing <strong>tidylog</strong> or running your own checks to produce a variable similar _merge</p></li>
-<li><p><strong>left_join() </strong> - similar to merge, then keep the _merge==3</p></li>
-<li><p><strong>anti_join() </strong> - similar to merge, then keep the _merge==1 | _merge==2</p></li>
-</ul>
-<div id="reshaping-data" class="section level2">
-<h2>Reshaping Data</h2>
-<p>Many of R’s popular graphing and mapping tools prefer data to be in long format. Hadley Wickham has <a href="https://vita.had.co.nz/papers/tidy-data.pdf">written eloquently</a> about why long data, or <em>tidy</em> data, has many advantages. If you frequently work with social science data files that tend to be stored in wide files, Knowing how to reshape your data is an essential skill.</p>
-<div id="wide-to-long" class="section level3">
-<h3>Wide to long</h3>
-<p>See <a href="https://stats.idre.ucla.edu/stata/modules/reshaping-data-wide-to-long/">here</a> for a good example of reshaping wide data to long format.</p>
-<p>Wide format</p>
-<pre class="r"><code>id      inc96      inc97      inc98   
-1003    75000      76000      77000    
-1004    40000      40500      41000    
-1005    45000      45400      45800    </code></pre>
-<p>Long format</p>
-<pre class="r"><code>id        year    inc 
-1003      96      40000  
-1003      97      40500  
-1003      98      41000  
-1004      96      45000  
-1004      97      45400  
-1004      98      45800  
-1005      96      75000  
-1005      97      76000  
-1005      98      77000 </code></pre>
-<p>Stata’s reshape command</p>
-<p>Stata parses the variable name to separate inc97 into the year and the income value.</p>
-<pre class="r"><code>reshape long inc, i(id) j(year) </code></pre>
-<p>gather() from the <strong>tidyr</strong> package works very similarly, but leaves the value of year as inc97, etc. You can change these to a year value after.</p>
-<pre class="r"><code>df_long &lt;- gather(df, year, inc, -id)
-
-# To leave 96, but as a character variable
-df_long &lt;- str_remove(df_long$year, &quot;inc&quot;)
-
-# To leave 96 as a number
-df_long &lt;- as.numeric(str_remove(df_long$year, &quot;inc&quot;)) 
-
-# To leave 1996 as a number
-df_long &lt;- as.numeric(str_remove(df_long$year, &quot;inc&quot;))+1900 </code></pre>
-</div>
-<div id="long-to-wide" class="section level3">
-<h3>Long to wide</h3>
-<p>Stata</p>
-<pre class="r"><code>reshape wide age, i(id)  j(year) </code></pre>
-<p>spread() from the tidyr package</p>
-<pre class="r"><code>df_wide &lt;- spread(df_long, year, inc)
-
-# But this leaves the column names as 96, 97, 98. To rename:
-names(df_wide) &lt;- c(&quot;id&quot;, &quot;inc96&quot;, &quot;inc97&quot;, &quot;inc98&quot;)</code></pre>
-</div>
-</div>
-</div>
+<p>…</p>
+<p>Or you can can get fancy by adding the variable label too and now you basically have a report:</p>
+<pre class="r"><code>    for(i in 2:length(df)) {
+      tmp1 &lt;- attr(df[[i]], &quot;label&quot;)
+      tmp2 &lt;- paste0(&quot;ctab(df, &quot;, names(df)[i], &quot;, Q12r)&quot;)
+      cat(tmp1, &quot;\n\n&quot;, tmp2, &quot;\n\n&quot;)  # \n is a line break
+    }</code></pre>
+<p>Output:</p>
+<blockquote>
+<p>Do you have a transition plan?</p>
+<pre><code>ctab(df, Q3, Q12r)</code></pre>
+<p>Did you help make your transition plan?</p>
+<pre><code>ctab(df, Q4, Q12r)</code></pre>
+<p>Do you think having a transition plan is helpful?</p>
+<pre><code>ctab(df, Q5, Q12r)</code></pre>
+</blockquote>
+<p>Last thing, there is a thing called Extract Function in the Code menu. In theory, you should be able to highlight a few lines of code that do something useful and it will just rewrite the code as a function. It works pretty well, but usually you would end up reorganizing your initial approach to write a function anyway, so I don’t find it too helpful.</p>
+<p>Reasonably accessible<br />
+<a href="https://dplyr.tidyverse.org/articles/programming.html" class="uri">https://dplyr.tidyverse.org/articles/programming.html</a></p>
+<p>More details on the {{ }} functionality<br />
+<a href="https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/" class="uri">https://www.tidyverse.org/blog/2019/06/rlang-0-4-0/</a></p>
+<p>Hadley’s function section - Still too complex for me<br />
+<a href="https://r4ds.had.co.nz/functions.html" class="uri">https://r4ds.had.co.nz/functions.html</a></p>
 
 
 

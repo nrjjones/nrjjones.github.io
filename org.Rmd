@@ -10,7 +10,7 @@ output:
 
 # Strive for complete documentation
 
-Your collaborators will appreicate your efforts to document every step of data cleaning, why you made analytical decisions, and how you organized your output, but your most thankful collaborator will be you in 2 years.  
+Your collaborators will appreciate your efforts to document every step of data cleaning, why you made analytical decisions, and how you organized your output, but your most thankful collaborator will be you in 2 years.  
 
 # Folder structure to help you stay organized
 
@@ -24,7 +24,7 @@ For simple projects, I include a single R code file, a README, and three folders
 
 It will be tempting to rename it something sane like *Smith Sample.xlsx*, but will you remember the original file name in 2 years when you have to find it in your email?  If you have the ability, consider making this folder read-only after you have moved all the files you need for the project so you don't accidentally *just fix this one little thing* that will go undocumented and then break the code when Smith sends *...SEND THIS ONE v2.xlsx*.    
 
-**/out** holds any file you create. For example, a raw file with a sane name, data with some numeric variables cleaned up that were misread as characters, a merged survey data and adminstrative file, or a de-identified file to distribute to a PI's research assistant.  Files in **/out** should be produced from files in the **/raw** folder completely by code and considered disposable, so they do not need version numbers or date stamps.  Sound dangerous?  Read on...
+**/out** holds any file you create. For example, a raw file with a sane name, data with some numeric variables cleaned up that were misread as characters, a merged survey data and administrative file, or a de-identified file to distribute to a PI's research assistant.  Files in **/out** should be produced from files in the **/raw** folder completely by code and considered disposable, so they do not need version numbers or date stamps.  Sound dangerous?  Read on...
 
 **/pst** holds versions of files stored in **/out** that have been distributed to others.  When you send a file to your research partner, you should copy files from **/out** to a date stamped folder in **/pst** and rename them with a date stamp and then zip the folder.  **/pst** should hold only zipped folders with date stamped code and data files.  If your partner asks questions a month after you send a file, you can use version control to investigate how the code that produced the file you sent differs from your current code.  
 
