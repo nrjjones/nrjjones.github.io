@@ -31,7 +31,7 @@ It will be tempting to rename it something sane like *Smith Sample.xlsx*, but wi
 ## The basic file structure
 
 |Item   | Description  |  
-|-------|------------------------------------------------|  
+|:-------|:------------------------------------------------|  
 |README | Essential info about the project  |  
 |code.R | All steps for loading data, cleaning, analysis, and output|  
 |  /raw | Folder for raw data, never altered|  
@@ -41,7 +41,7 @@ It will be tempting to rename it something sane like *Smith Sample.xlsx*, but wi
 For more complex projects, you might add a documentation folder (doc) and a makefile that runs several smaller R programs stored in /R.  
 
 |Item       | Description  |  
-|-----------|------------------------------------------------|  
+|:-----------|:------------------------------------------------|  
 |README     | Essential info about the project  |  
 |makefile.R | Code to run programs in **/R** folder in order |  
 |  /R       | Folder for LoadData.R, CleanData.R, Analysis.R, Report.Rmd |  
