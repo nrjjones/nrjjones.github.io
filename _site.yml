@@ -24,4 +24,4 @@ navbar:
       href: http://github.com/nrjjones  
 output:
   html_document:
-    theme: yeti
+    theme: darkly
