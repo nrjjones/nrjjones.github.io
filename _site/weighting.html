@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Nathan R. Jones - cv</title>
+<title>Nathan R. Jones - Weighting</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -108,7 +108,7 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Reporting</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./weighting.html">
+    <a class="nav-link active" href="./weighting.html" aria-current="page">
  <span class="menu-text">Weighting</span></a>
   </li>  
 </ul>
@@ -138,8 +138,13 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#training-and-education" id="toc-training-and-education" class="nav-link active" data-scroll-target="#training-and-education">Training and Education</a></li>
-  <li><a href="#work-experience" id="toc-work-experience" class="nav-link" data-scroll-target="#work-experience">Work Experience</a></li>
+  <li><a href="#three-main-components-of-a-weight" id="toc-three-main-components-of-a-weight" class="nav-link active" data-scroll-target="#three-main-components-of-a-weight">Three main components of a weight</a>
+  <ul class="collapse">
+  <li><a href="#base-weights" id="toc-base-weights" class="nav-link" data-scroll-target="#base-weights">Base weights</a></li>
+  <li><a href="#non-response-adjustment" id="toc-non-response-adjustment" class="nav-link" data-scroll-target="#non-response-adjustment">Non-response adjustment</a></li>
+  <li><a href="#post-stratificationraking-adjustment" id="toc-post-stratificationraking-adjustment" class="nav-link" data-scroll-target="#post-stratificationraking-adjustment">Post stratification/Raking adjustment</a></li>
+  </ul></li>
+  <li><a href="#using-weights-with-the-survey-package" id="toc-using-weights-with-the-survey-package" class="nav-link" data-scroll-target="#using-weights-with-the-survey-package">Using weights with the survey package</a></li>
   </ul>
 </nav>
     </div>
@@ -148,7 +153,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">cv</h1>
+<h1 class="title">Weighting</h1>
 </div>
 
 
@@ -163,53 +168,20 @@ ul.task-list li input[type="checkbox"] {
 
 </header>
 
-<section id="training-and-education" class="level1">
-<h1>Training and Education</h1>
-<p><strong>2001-2003 The RAND Corporation</strong></p>
-<ul>
-<li>National Institute on Aging Post-Doctoral Training Fellowship</li>
-</ul>
-<p><strong>1997-2001 University of Pennsylvania</strong></p>
-<ul>
-<li>PhD, Demography, 2001</li>
-<li>AM, Demography, 1998</li>
-</ul>
-<p>National Institute on Aging Pre-Doctoral Training Fellowship, 1998-2001.</p>
-<p><strong>1993-1997 Emory University</strong></p>
-<ul>
-<li>BA/MA, Sociology, 1997</li>
-</ul>
+<section id="three-main-components-of-a-weight" class="level1">
+<h1>Three main components of a weight</h1>
+<section id="base-weights" class="level2">
+<h2 class="anchored" data-anchor-id="base-weights">Base weights</h2>
 </section>
-<section id="work-experience" class="level1">
-<h1>Work Experience</h1>
-<p><strong>2012-present University of Wisconsin Survey Center</strong></p>
-<p>Senior Project Director</p>
-<ul>
-<li><p>Consults with principal investigators on survey research and sampling methodologies.</p></li>
-<li><p>Manages and coordinates all aspects of surveys including research development, instrument design, application development, and supervision of survey staff.</p></li>
-<li><p>Manages and analyzes data using statistical software packages including Stata, R, SAS, SPSS, and ArcGIS; writes technical documentation on survey methodology and responses rates; and provides analysis assistance to principal investigators.</p></li>
-<li><p>International training and technical assistance in Chad, China (Tibet), Ethiopia, Philippines, and others.</p></li>
-</ul>
-<p><strong>2008-2012 University of Wisconsin – Carbone Cancer Center (UWCCC)</strong></p>
-<p>Assistant Scientist</p>
-<ul>
-<li><p>Director of Survey Research Shared Service (SRSS), providing consultation and technical assistance to cancer center members and other researchers conducting mail, telephone, web-based, and multi-mode surveys.</p></li>
-<li><p>Analyst for MATCH County Health Rankings in UW Population Health Institute.</p></li>
-<li><p>Epidemiologist with Wisconsin Cancer Control and Outreach Program.</p></li>
-<li><p>Principal investigator with UWCCC Nutritional Epidemiology unit.</p></li>
-<li><p>Research collaborator with faculty and graduate students associated with UW Carbone Cancer Center and the Population Health Institute.</p></li>
-<li><p>Principal investigator for UWCCC tobacco-related grants including Tobacco Surveillance and Evaluation, Training and Technical Assistance, Wisconsin WINS, and SmokeFree Wisconsin.</p></li>
-</ul>
-<p><strong>2004-2008 CDC-Office on Smoking and Health</strong></p>
-<p>Senior Service Fellow - Statistician/Demographer (GS-13)</p>
-<ul>
-<li><p>Helped coordinate the Global Tobacco Surveillance System (GTSS), a series of school-based surveys conducted in partnership with WHO that includes the Global Youth Tobacco Survey (GYTS), the Global School Personnel Survey (GSPS), the Global Health Professional Students Survey (GHPSS), and the Global Adult Tobacco Survey (GATS).</p></li>
-<li><p>Provided logistical and technical support to survey coordinators in over 160 countries.</p></li>
-<li><p>Teaching faculty for GTSS training and analysis workshops conducted in 6 WHO regions.</p></li>
-<li><p>Consultant in the development of research protocols, survey instruments, and training materials for the GATS fielded in 15 developing countries during 2006-2007, part of the Bloomberg Worldwide Stop Smoking Initiative.</p></li>
-<li><p>Served as consultant in the development of research protocols, survey instrument, and training materials for the GHPSS.</p></li>
-<li><p>Extensive international experience conducting workshops in Barbados, Burkina Faso, Republic of Congo, Denmark, Egypt, Mexico, Philippines, Costa Rica, Switzerland, Thailand, and others.</p></li>
-</ul>
+<section id="non-response-adjustment" class="level2">
+<h2 class="anchored" data-anchor-id="non-response-adjustment">Non-response adjustment</h2>
+</section>
+<section id="post-stratificationraking-adjustment" class="level2">
+<h2 class="anchored" data-anchor-id="post-stratificationraking-adjustment">Post stratification/Raking adjustment</h2>
+</section>
+</section>
+<section id="using-weights-with-the-survey-package" class="level1">
+<h1>Using weights with the survey package</h1>
 
 
 </section>

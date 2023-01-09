@@ -1,0 +1,171 @@
+---
+title: "Reporting"
+editor: visual
+---
+
+# IN PROGRESS
+
+# Frequency tables
+
+```{r, eval=FALSE}
+
+frtab <- function(df, x) {
+  tmp <- df %>%
+    select({{x}}) %>%
+    ftable() %>%
+    as.data.frame() %>%
+    mutate(
+      pct = scales::percent(Freq/sum(Freq), accuracy = 0.1),
+      `Percent (N)` = paste0(pct, " (", Freq, ")")
+    ) %>%
+    select(-Freq, -pct) %>%
+    kable()
+
+  tmp
+}
+```
+
+# CATA tables
+
+```{r, eval=FALSE}
+
+catatab <- function(df, x, stub) {
+  tmp <- df %>%
+    select(contains(x)) %>%
+    pivot_longer(
+      everything(),
+      names_to = "var",
+      values_to = "val"
+    ) %>%
+    mutate(
+      val = case_when(
+        !is.na(val) ~ "Selected",
+        is.na(val) ~ "Not selected"
+      )
+    ) %>%
+    group_by(var, val) %>%
+    tally() %>%
+    group_by(var) %>%
+    mutate(
+      N=sum(n),
+      perc = n/N,
+      Percent = sprintf("%.1f%s", signif(perc*100, 3), "%"),
+      `Percent(N)` = paste0(Percent, " (", n, ")")
+    ) %>%
+    select(-c(perc, n, N)) %>%
+    ungroup()
+
+
+  if(length(tmp$var) > 0) {
+
+    tmp <- left_join(tmp, varlist) %>%
+      select(Question=labels, val, `Percent(N)`) %>%
+      ungroup()
+
+    tmp$Question <- str_remove(tmp$Question, stub)
+
+    tmp <- pivot_wider(
+      tmp,
+      names_from = val,
+      values_from = `Percent(N)`
+    ) %>%
+      select(Question, Selected)
+
+    names(tmp) <- paste0(names(tmp), " Percent(N)")
+    names(tmp)[1] <- "Response"
+
+    tmp[is.na(tmp)] <- "0.0%(0)"
+
+    kable(tmp)
+  }
+}
+
+```
+
+# "Codebook" tables based on col number for easy looping
+
+```{r, eval=FALSE}
+cbtab <- function(df, x) {
+  tmp <- df %>%
+    select(names(df)[x]) %>%
+    ftable() %>%
+    as.data.frame() %>%
+    mutate(
+      pct = scales::percent(Freq/sum(Freq), accuracy = 0.1),
+      `Percent (N)` = paste0(pct, " (", Freq, ")")
+    ) %>%
+    select(-Freq, -pct) %>%
+    kable()
+
+  tmp
+}
+```
+
+# Full datafile frequency report with cleaned variable labels
+
+```{r, eval=FALSE}
+codebk <- function(x, df, varlist) {
+
+  rpt <- x
+  # Report generation
+  sink(rpt)  # Sink redirects output to write a Rmd file
+
+  # Report header
+  cat("--- \n")
+  tmp <- paste0("title: \"", str_remove(rpt, ".qmd"), "\"\n")
+  cat(tmp)
+  cat("output: word_document \n")
+  cat("--- \n\n")
+
+  # Report body
+
+  cat("```{r , results='asis', echo=FALSE, message=FALSE, warning=FALSE} \n")
+  cat("library(tidyverse) \n")
+  cat("library(stringr) \n")
+  cat("library(knitr) \n")
+  cat("options(xtable.comment=FALSE) \n")
+  cat("source(\"load_data.R\") \n")
+  cat("\n\n")
+  cat("# Add extra filters to df here \n")
+  cat("\n\n")
+  cat("``` \n\n")
+
+  # Only categorical vars
+
+  for(i in 1:length(df)) {
+
+    tmp1 <- paste0("## ", varlist$var[i], ": " , varlist$labels[[i]])
+    cat(tmp1)
+    cat("\n\n")
+    cat("```{r , echo=FALSE, message=FALSE} \n\n")
+    cat("cbtab( df, ",i," ) \n")
+    cat("``` \n\n")
+  }
+
+  sink()  # Return output to console
+}
+
+```
+
+# OE export
+
+```{r}
+openend <- function(oe, x, pnum) {
+  tmp <- oe[x]
+  names(tmp) <- "Verbatim Response"
+  tmp <- tmp %>% filter(`Verbatim Response` != "")
+  write_csv(tmp, paste0("./out/", pnum, " ", oev$var[x], " Responses ", Sys.Date(), ".csv"), na="")
+
+}
+
+```
+
+# Client update reports
+
+# Create/Update an incentive list and payment log
+
+# Mail merge for gift code delivery
+
+# Zip for delivery and post to Box
+
+# Automate it all!

@@ -1,0 +1,27 @@
+---
+title: "Projects"
+output:
+  html_document:
+    toc: true
+    toc_depth: 2
+    toc_float: 
+        collapsed: false
+---
+
+# Why use R?
+
+The following sections may be helpful to new R users who already know another system like Stata. R and RStudio have several advantages over statistical software like Stata, SAS, and SPSS.
+
+-   R can load multiple data sources in multiple formats at the same time.
+-   R is open source and helper packages are widely developed by users.
+-   R incorporates version control and collaboration tools like git and GitHub.
+-   R can output data to any file format and analysis or reports in HTML, PDF, docx, and pptx format.
+-   The RStudio IDE has a nice organization tool called Projects.
+
+# Why use a Project?
+
+[Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) are useful for creating a new space for your work. Think of it like a blank sheet of paper or, for more involved tasks, maybe a clean and stocked operating room. The working directory is automatically set to the project's top level folder, and a .Rproj file can store information about your project.
+
+If you are coming from Stata, you may be used to setting working directories to access and save files around your local or networked file structure. You can do that with R too using a command *setwd()*, but the R community considers this [bad manners](https://cdn-images-1.medium.com/max/1600/1*fmEQAQ7H_cqAzwOPCIhv8w.png). They prefer to organize data, code, and tasks within a project-level directory for easier collaboration, very similar to the way UWSC already organizes project folders. This approach may be easier to adapt for newer, unaffiliated researchers who work with smaller and more portable data and harder for those who work on larger, collaborative projects that keep data in a single place.
+
+[RStudio presentation about Projects](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-change-part-1/)

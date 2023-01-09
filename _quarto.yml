@@ -1,0 +1,31 @@
+project:
+  type: website
+
+website:
+  title: "Nathan R. Jones"
+  navbar:
+    background: primary
+    left:
+      - href: index.qmd
+        text: Home
+      - basic.qmd
+      - org.qmd
+      - projects.qmd
+      - functions.qmd
+      - sample_clean.qmd
+      - reporting.qmd
+      - weighting.qmd
+    right:
+      - icon: fa-envelope fa-lg
+        href: contact.html
+      - icon: fa-github fa-lg
+        href: http://github.com/nrjjones
+
+format:
+  html:
+    theme: darkly
+    css: styles.css
+    toc: true
+
+editor: visual
+
