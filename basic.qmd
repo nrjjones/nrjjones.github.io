@@ -88,4 +88,3 @@ library(readxl)
 read_xlsx("./raw/Any Excel File Skip First Two Rows.xlsx", skip=2)
 
 ```
-
