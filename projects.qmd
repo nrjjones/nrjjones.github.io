@@ -8,16 +8,6 @@ output:
         collapsed: false
 ---
 
-# Why use R?
-
-The following sections may be helpful to new R users who already know another system like Stata. R and RStudio have several advantages over statistical software like Stata, SAS, and SPSS.
-
--   R can load multiple data sources in multiple formats at the same time.
--   R is open source and helper packages are widely developed by users.
--   R incorporates version control and collaboration tools like git and GitHub.
--   R can output data to any file format and analysis or reports in HTML, PDF, docx, and pptx format.
--   The RStudio IDE has a nice organization tool called Projects.
-
 # Why use a Project?
 
 [Projects](https://support.rstudio.com/hc/en-us/articles/200526207-Using-Projects) are useful for creating a new space for your work. Think of it like a blank sheet of paper or, for more involved tasks, maybe a clean and stocked operating room. The working directory is automatically set to the project's top level folder, and a .Rproj file can store information about your project.

@@ -3,6 +3,16 @@ title: "Basic R"
 editor: visual
 ---
 
+Why use R?
+
+R and RStudio have several advantages over statistical software like Stata, SAS, and SPSS.
+
+-   R can load multiple data sources in multiple formats at the same time.
+-   R is open source and helper packages are widely developed by users.
+-   R incorporates version control and collaboration tools like git and GitHub.
+-   R can output data to any file format and can create reports in HTML, PDF, docx, and pptx format.
+-   The RStudio IDE has a nice organization tool called [Projects](https://nrjjones.github.io/projects.html).
+
 # Component overview
 
 [R](https://cran.r-project.org/) is a free and open source statistical computing language. [RStudio](https://posit.co/products/open-source/rstudio/) is an integrated development environment (IDE) that makes using R much easier. You need to install both on your computer to get started.
@@ -12,60 +22,20 @@ editor: visual
 -   Open Software Center
 -   Click to install R
 -   Click to install RStudio
+-   (Possibly necessary) Open RGui to initialize local folders
 -   Install packages
 
 # Installing R, RStudio (Non-UWSC)
 
 -   Install latest R from [R's main site](https://cran.r-project.org/)
-
 -   Install RStudio from [Posit's site](https://posit.co/downloads/)
-
 -   Install packages
 
 # Orientation to the interface
 
--   Square: Code, Console, Environment, Files
+-   Grid: Code, Console, Environment, Files
 -   Special views
 -   Pop out code
-
-# Workflow
-
-Example getting new data from Qualtrics/POD, process for delivery, zip, post to Box
-
-```{r, eval = FALSE}
-
-df <- read_spss("./raw/PXXX Qualtrics Data File Raw.sav")
-df <- as_factor(df)
-
-# Clean, etc
-df <- df %>% 
-  select(
-    csid = ExternalReference,
-    Q1:Q35
-  )
-
-
-write_csv(df, "./out/PXXX Qualtrics Data File Clean.csv")
-write_sav(df, "./out/PXXX Qualtrics Data File Clean.sav")
-write_dta(df, "./out/PXXX Qualtrics Data File Clean.dta")
-
-zip(
-  paste0("./pst/PXXX Data delivery for ", Sys.Date(), ".zip"),
-  c(
-    "./out/PXXX Qualtrics Data File Clean.csv",
-    "./out/PXXX Qualtrics Data File Clean.sav",
-    "./out/PXXX Qualtrics Data File Clean.dta"
-  )
-)
-
-box_auth()
-
-box_ul(
-  dir_id = 128932912815,
-  paste0("./pst/PXXX Data delivery for ", Sys.Date(), ".zip"),
-)
-
-```
 
 # Helper packages: tidyverse, haven, boxr, qualtRics
 
@@ -77,14 +47,77 @@ box_ul(
 # Importing/exporting various formats
 
 ```{r, eval=FALSE}
+
 library(haven)
 
-read_spss("./raw/Any SPSS File.sav")
-read_dta("./raw/Any Stata File.dta")
-read_csv("./raw/Any csv File.csv")
+df1 <- read_spss("./raw/Any SPSS File.sav")
+df2 <- read_dta("./raw/Any Stata File.dta")
+df3 <- read_csv("./raw/Any csv File.csv")
 
 library(readxl)
 
-read_xlsx("./raw/Any Excel File Skip First Two Rows.xlsx", skip=2)
+df4 <- read_xlsx("./raw/Any Excel File Skip First Two Rows.xlsx", skip=2)
+
+```
+
+# Example workflow
+
+Example getting new data from Qualtrics/POD, process for delivery, zip, post to Box
+
+```{r, eval = FALSE}
+
+# Read survey data file and convert to labeled data
+
+df <- read_spss("./raw/PXXX Wave 1 Data File Raw.sav")
+df <- as_factor(df)
+
+# Read sample file and keep important sample data
+
+sam <- read_csv("./raw/PXXX Sample File.csv")
+
+sam <- sam %>% 
+  filter(wave == 1) %>% 
+  select(csid, dob, zip)
+
+# Clean, remove extra variables, etc
+
+df <- df %>% 
+  filter(!is.na(csid)) %>% 
+  select(
+    csid = ExternalReference,
+    Q1:Q35
+  )
+
+# Merge survey with sample data
+
+df <- left_join(df, sam, by="csid")
+
+# Write data in csv, SPSS, and Stata formats
+
+write_csv(df, "./out/PXXX Interim Data w Sample Info.csv")
+write_sav(df, "./out/PXXX Interim Data w Sample Info.sav")
+write_dta(df, "./out/PXXX Interim Data w Sample Info.dta")
+
+# Zip into folder with date stamp
+
+zip(
+  paste0("./pst/PXXX Interim Data delivery for ", Sys.Date(), ".zip"),
+  c(
+    "./out/PXXX Interim Data w Sample Info.csv",
+    "./out/PXXX Interim Data w Sample Info.sav",
+    "./out/PXXX Interim Data w Sample Info.dta"
+  )
+)
+
+# Refresh Box athenitication
+
+box_auth()
+
+# Upload date stamp to zip
+
+box_ul(
+  dir_id = 1234567891234,
+  paste0("./pst/PXXX Interim Data delivery for ", Sys.Date(), ".zip"),
+)
 
 ```
