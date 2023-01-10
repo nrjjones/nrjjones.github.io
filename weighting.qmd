@@ -1,0 +1,14 @@
+---
+title: "Weighting"
+editor: visual
+---
+
+# Three main components of a weight
+
+## Base weights
+
+## Non-response adjustment
+
+## Post stratification/Raking adjustment
+
+# Using weights with the survey package
