@@ -9,13 +9,20 @@ website:
     left:
       - href: index.qmd
         text: Home
-      - basic.qmd
-      - org.qmd
-      - projects.qmd
-      - functions.qmd
-      - sample_clean.qmd
-      - reporting.qmd
-      - weighting.qmd
+      - href: basic.qmd
+        text: Basics
+      - href: org.qmd
+        text: Organization
+      - href: projects.qmd
+        text: Projects
+      - href: functions.qmd
+        text: Functions
+      - href: sample_clean.qmd
+        text: Sample Cleaning
+      - href: reporting.qmd
+        text: Reporting
+      - href: weighting.qmd
+        text: Weighting
     right:
       - icon: fa-envelope fa-lg
         href: contact.html
