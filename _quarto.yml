@@ -13,8 +13,6 @@ website:
         text: Getting started
       - href: projects.qmd
         text: RStudio projects
-      - href: functions.qmd
-        text: Functions
       - href: sample_clean.qmd
         text: Sample Cleaning
       - href: reporting.qmd
@@ -23,6 +21,9 @@ website:
         text: Weighting
       - href: org.qmd
         text: Organization
+      - href: functions.qmd
+        text: Functions
+
 
     right:
       - icon: envelope

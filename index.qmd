@@ -8,8 +8,6 @@ title: "UWSC Topics"
 
 -   [RStudio projects](projects.qmd)
 
--   [Functions](functions.qmd)
-
 -   [Sample Cleaning](sample_clean.qmd)
 
 -   [Reporting](reporting.qmd)
@@ -17,6 +15,8 @@ title: "UWSC Topics"
 -   [Weighting](weighting.qmd)
 
 -   [File organization](org.qmd)
+
+-   [Functions](functions.qmd)
 
 # Other
 
