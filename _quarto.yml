@@ -25,9 +25,9 @@ website:
         text: Organization
 
     right:
-      - icon: fa-envelope fa-lg
+      - icon: envelope
         href: contact.html
-      - icon: fa-github fa-lg
+      - icon: github
         href: http://github.com/nrjjones
 
 format:
