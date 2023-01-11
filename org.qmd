@@ -20,7 +20,7 @@ For simple projects, I include a single R code file, a README, and three folders
 
 **/raw** holds original data files. These are the files people send you or you download from the internet or you enter by hand with whatever mad name you received them with. Ever get one like this?
 
-*Address File for Nathan 3-2-2015 v3 FINAL smith extra edits - SEND THIS ONE.xlsx*
+> *Address File for Nathan 3-2-2015 v3 FINAL smith extra edits - SEND THIS ONE.xlsx*
 
 It will be tempting to rename it something sane like *Smith Sample.xlsx*, but will you remember the original file name in 2 years when you have to find it in your email? If you have the ability, consider making this folder read-only after you have moved all the files you need for the project so you don't accidentally *just fix this one little thing* that will go undocumented and then break the code when Smith sends *...SEND THIS ONE v2.xlsx*.
 
@@ -52,12 +52,12 @@ For more complex projects, you might add a documentation folder (doc) and a make
 
 # Collaboration
 
-RStudio includes integration with many collaboration tools like Git and Github. Git is a version control system. It allows you to mark milestones in a project by saving all the current versions with an explanatory note called a commit. When you come to a key transition, decision point, or need to experiment, you can commit your project (or parts of a project) and create a fork to work on something. If things go well, you can merge your fork into the main project and move on. If things don't, you can merge the parts you want to keep or ditch everything and go back to the previous milestone.
+RStudio includes integration with many collaboration tools like git and Github. Git is a version control system. It allows you to mark milestones in a project by saving all the current versions with an explanatory note called a commit. When you come to a key transition, decision point, or need to experiment, you can commit your project (or parts of a project) and create a fork to work on something. If things go well, you can merge your fork into the main project and move on. If things don't, you can merge the parts you want to keep or ditch everything and go back to the previous milestone.
 
 Github is an online extension of git that allows more cooperation options, hosts projects, and has many other interesting features.
 
-## Git and Github
+## git and Github
 
-An excellent conceptual introduction and set up guide by Jenny Bryan - [Happy Git and GitHub for the useR](http://happygitwithr.com/)
+An excellent conceptual introduction and set up guide by Jenny Bryan - [Happy git and GitHub for the useR](http://happygitwithr.com/)
 
 A webinar on using these tools from RStudio - [Managing Change in RStudio](https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/)

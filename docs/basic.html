@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Nathan R. Jones - Basic R</title>
+<title>Nathan R Jones - Basic R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -134,7 +134,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Nathan R. Jones</span>
+    <span class="navbar-title">Nathan R Jones</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -148,15 +148,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   </li>  
   <li class="nav-item">
     <a class="nav-link active" href="./basic.html" aria-current="page">
- <span class="menu-text">Basics</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link" href="./org.html">
- <span class="menu-text">Organization</span></a>
+ <span class="menu-text">Getting started</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./projects.html">
- <span class="menu-text">Projects</span></a>
+ <span class="menu-text">RStudio projects</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./functions.html">
@@ -173,6 +169,10 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
   <li class="nav-item">
     <a class="nav-link" href="./weighting.html">
  <span class="menu-text">Weighting</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./org.html">
+ <span class="menu-text">Organization</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -201,11 +201,12 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#component-overview" id="toc-component-overview" class="nav-link active" data-scroll-target="#component-overview">Component overview</a></li>
+  <li><a href="#why-use-r" id="toc-why-use-r" class="nav-link active" data-scroll-target="#why-use-r">Why use R?</a></li>
+  <li><a href="#component-overview" id="toc-component-overview" class="nav-link" data-scroll-target="#component-overview">Component overview</a></li>
   <li><a href="#installing-r-rstudio-uwsc" id="toc-installing-r-rstudio-uwsc" class="nav-link" data-scroll-target="#installing-r-rstudio-uwsc">Installing R, RStudio (UWSC)</a></li>
   <li><a href="#installing-r-rstudio-non-uwsc" id="toc-installing-r-rstudio-non-uwsc" class="nav-link" data-scroll-target="#installing-r-rstudio-non-uwsc">Installing R, RStudio (Non-UWSC)</a></li>
   <li><a href="#orientation-to-the-interface" id="toc-orientation-to-the-interface" class="nav-link" data-scroll-target="#orientation-to-the-interface">Orientation to the interface</a></li>
-  <li><a href="#helper-packages-tidyverse-haven-boxr-qualtrics" id="toc-helper-packages-tidyverse-haven-boxr-qualtrics" class="nav-link" data-scroll-target="#helper-packages-tidyverse-haven-boxr-qualtrics">Helper packages: tidyverse, haven, boxr, qualtRics</a></li>
+  <li><a href="#helper-packages" id="toc-helper-packages" class="nav-link" data-scroll-target="#helper-packages">Helper packages:</a></li>
   <li><a href="#importingexporting-various-formats" id="toc-importingexporting-various-formats" class="nav-link" data-scroll-target="#importingexporting-various-formats">Importing/exporting various formats</a></li>
   <li><a href="#example-workflow" id="toc-example-workflow" class="nav-link" data-scroll-target="#example-workflow">Example workflow</a></li>
   </ul>
@@ -231,7 +232,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 </header>
 
-<p>Why use R?</p>
+<section id="why-use-r" class="level1">
+<h1>Why use R?</h1>
 <p>R and RStudio have several advantages over statistical software like Stata, SAS, and SPSS.</p>
 <ul>
 <li>R can load multiple data sources in multiple formats at the same time.</li>
@@ -240,6 +242,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>R can output data to any file format and can create reports in HTML, PDF, docx, and pptx format.</li>
 <li>The RStudio IDE has a nice organization tool called <a href="https://nrjjones.github.io/projects.html">Projects</a>.</li>
 </ul>
+</section>
 <section id="component-overview" class="level1">
 <h1>Component overview</h1>
 <p><a href="https://cran.r-project.org/">R</a> is a free and open source statistical computing language. <a href="https://posit.co/products/open-source/rstudio/">RStudio</a> is an integrated development environment (IDE) that makes using R much easier. You need to install both on your computer to get started.</p>
@@ -270,13 +273,13 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li>Pop out code</li>
 </ul>
 </section>
-<section id="helper-packages-tidyverse-haven-boxr-qualtrics" class="level1">
-<h1>Helper packages: tidyverse, haven, boxr, qualtRics</h1>
+<section id="helper-packages" class="level1">
+<h1>Helper packages:</h1>
 <ul>
-<li>Tidyverse - Lots of helpful packages like dplyr, tidyr, stringr, etc</li>
+<li>tidyverse - Lots of helpful data manipulation tools</li>
 <li>haven - Reads and writes SPSS, Stata, csv</li>
-<li>boxr - Posts to Box</li>
-<li>qualtRics - Reads from Qualtrics</li>
+<li>boxr - Posts files to Box</li>
+<li>qualtRics - Reads and processes data from Qualtrics</li>
 </ul>
 </section>
 <section id="importingexporting-various-formats" class="level1">
@@ -295,7 +298,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </section>
 <section id="example-workflow" class="level1">
 <h1>Example workflow</h1>
-<p>Example getting new data from Qualtrics/POD, process for delivery, zip, post to Box</p>
+<p>One way of getting new data from Qualtrics/POD, process for delivery, zip, post to Box</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Read survey data file and convert to labeled data</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a></span>

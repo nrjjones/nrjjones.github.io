@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Nathan R. Jones - Organization</title>
+<title>Nathan R Jones - Organization</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -71,7 +71,7 @@ ul.task-list li input[type="checkbox"] {
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container">
     <a class="navbar-brand" href="./index.html">
-    <span class="navbar-title">Nathan R. Jones</span>
+    <span class="navbar-title">Nathan R Jones</span>
     </a>
   </div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
@@ -85,15 +85,11 @@ ul.task-list li input[type="checkbox"] {
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./basic.html">
- <span class="menu-text">Basics</span></a>
-  </li>  
-  <li class="nav-item">
-    <a class="nav-link active" href="./org.html" aria-current="page">
- <span class="menu-text">Organization</span></a>
+ <span class="menu-text">Getting started</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./projects.html">
- <span class="menu-text">Projects</span></a>
+ <span class="menu-text">RStudio projects</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="./functions.html">
@@ -110,6 +106,10 @@ ul.task-list li input[type="checkbox"] {
   <li class="nav-item">
     <a class="nav-link" href="./weighting.html">
  <span class="menu-text">Weighting</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link active" href="./org.html" aria-current="page">
+ <span class="menu-text">Organization</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
@@ -145,7 +145,7 @@ ul.task-list li input[type="checkbox"] {
   </ul></li>
   <li><a href="#collaboration" id="toc-collaboration" class="nav-link" data-scroll-target="#collaboration">Collaboration</a>
   <ul class="collapse">
-  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github">Git and Github</a></li>
+  <li><a href="#git-and-github" id="toc-git-and-github" class="nav-link" data-scroll-target="#git-and-github">git and Github</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -179,7 +179,9 @@ ul.task-list li input[type="checkbox"] {
 <p>When starting a task, a simple workflow is to create a project in RStudio, start version control, and add a basic folder structure.</p>
 <p>For simple projects, I include a single R code file, a README, and three folders: <strong>raw</strong>, <strong>out</strong>, and <strong>pst</strong>. The R code file has at least 3 parts: loading data, doing things, and saving output with comments for each step or task. The README has a narrative, simplified summary of what I am doing to complement more detailed comments in the code file.</p>
 <p><strong>/raw</strong> holds original data files. These are the files people send you or you download from the internet or you enter by hand with whatever mad name you received them with. Ever get one like this?</p>
+<blockquote class="blockquote">
 <p><em>Address File for Nathan 3-2-2015 v3 FINAL smith extra edits - SEND THIS ONE.xlsx</em></p>
+</blockquote>
 <p>It will be tempting to rename it something sane like <em>Smith Sample.xlsx</em>, but will you remember the original file name in 2 years when you have to find it in your email? If you have the ability, consider making this folder read-only after you have moved all the files you need for the project so you don’t accidentally <em>just fix this one little thing</em> that will go undocumented and then break the code when Smith sends <em>…SEND THIS ONE v2.xlsx</em>.</p>
 <p><strong>/out</strong> holds any file you create. For example, a raw file with a sane name, data with some numeric variables cleaned up that were misread as characters, a merged survey data and administrative file, or a de-identified file to distribute to a PI’s research assistant. Files in <strong>/out</strong> should be produced from files in the <strong>/raw</strong> folder completely by code and considered disposable, so they do not need version numbers or date stamps. Sound dangerous? Read on…</p>
 <p><strong>/pst</strong> holds versions of files stored in <strong>/out</strong> that have been distributed to others. When you send a file to your research partner, you should copy files from <strong>/out</strong> to a date stamped folder in <strong>/pst</strong> and rename them with a date stamp and then zip the folder. <strong>/pst</strong> should hold only zipped folders with date stamped code and data files. If your partner asks questions a month after you send a file, you can use version control to investigate how the code that produced the file you sent differs from your current code.</p>
@@ -258,11 +260,11 @@ ul.task-list li input[type="checkbox"] {
 </section>
 <section id="collaboration" class="level1">
 <h1>Collaboration</h1>
-<p>RStudio includes integration with many collaboration tools like Git and Github. Git is a version control system. It allows you to mark milestones in a project by saving all the current versions with an explanatory note called a commit. When you come to a key transition, decision point, or need to experiment, you can commit your project (or parts of a project) and create a fork to work on something. If things go well, you can merge your fork into the main project and move on. If things don’t, you can merge the parts you want to keep or ditch everything and go back to the previous milestone.</p>
+<p>RStudio includes integration with many collaboration tools like git and Github. Git is a version control system. It allows you to mark milestones in a project by saving all the current versions with an explanatory note called a commit. When you come to a key transition, decision point, or need to experiment, you can commit your project (or parts of a project) and create a fork to work on something. If things go well, you can merge your fork into the main project and move on. If things don’t, you can merge the parts you want to keep or ditch everything and go back to the previous milestone.</p>
 <p>Github is an online extension of git that allows more cooperation options, hosts projects, and has many other interesting features.</p>
 <section id="git-and-github" class="level2">
-<h2 class="anchored" data-anchor-id="git-and-github">Git and Github</h2>
-<p>An excellent conceptual introduction and set up guide by Jenny Bryan - <a href="http://happygitwithr.com/">Happy Git and GitHub for the useR</a></p>
+<h2 class="anchored" data-anchor-id="git-and-github">git and Github</h2>
+<p>An excellent conceptual introduction and set up guide by Jenny Bryan - <a href="http://happygitwithr.com/">Happy git and GitHub for the useR</a></p>
 <p>A webinar on using these tools from RStudio - <a href="https://www.rstudio.com/resources/webinars/rstudio-essentials-webinar-series-managing-part-2/">Managing Change in RStudio</a></p>
 
 

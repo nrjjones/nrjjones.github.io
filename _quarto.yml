@@ -3,18 +3,16 @@ project:
   output-dir: docs
 
 website:
-  title: "Nathan R. Jones"
+  title: "Nathan R Jones"
   navbar:
     background: primary
     left:
       - href: index.qmd
         text: Home
       - href: basic.qmd
-        text: Basics
-      - href: org.qmd
-        text: Organization
+        text: Getting started
       - href: projects.qmd
-        text: Projects
+        text: RStudio projects
       - href: functions.qmd
         text: Functions
       - href: sample_clean.qmd
@@ -23,6 +21,9 @@ website:
         text: Reporting
       - href: weighting.qmd
         text: Weighting
+      - href: org.qmd
+        text: Organization
+
     right:
       - icon: fa-envelope fa-lg
         href: contact.html

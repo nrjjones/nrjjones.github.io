@@ -7,7 +7,7 @@ editor: visual
 
 ```{r, eval=FALSE}
 
-tmp %>% df %>% group_by(email) %>% mutate(n=n()) %>% filter(n>1)
+dup <- df %>% group_by(email) %>% mutate(n=n()) %>% filter(n>1)
 ```
 
 # Add csid

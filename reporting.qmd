@@ -168,4 +168,4 @@ openend <- function(oe, x, pnum) {
 
 # Zip for delivery and post to Box
 
-# Automate it all!
+# Automate it all

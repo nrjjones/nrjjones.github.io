@@ -12,6 +12,10 @@ Office: 608-890-4724
 
 I am a Senior Project Director and Data Scientist at the University of Wisconsin Survey Center. My formal training is in demography and I have been a member of the Population Association of America since 1997. I have spent most of my career conducting population health research and providing methodological consultation to faculty, researchers, and students. Before moving to Wisconsin, I worked in the CDC's Office on Smoking and Health, UCLA's California Center for Population Research, and The RAND Corporation.
 
+[Additional publications on Google Scholar](https://scholar.google.com/citations?user=6jnP2wEAAAAJ&hl=en&oi=sra)
+
+[CV](https://nrjjones.github.io/cv.html)
+
 # Select Publications
 
 -   U.S. National Cancer Institute and World Health Organization. The Economics of Tobacco and Tobacco Control. National Cancer Institute Tobacco Control Monograph 21. NIH Publication No. 16-CA-8029A. Bethesda, MD: U.S. Department of Health and Human Services, National Institutes of Health, National Cancer Institute; and Geneva, CH: World Health Organization; 2016.
@@ -27,5 +31,3 @@ I am a Senior Project Director and Data Scientist at the University of Wisconsin
 -   Warren CW, Jones NR, Eriksen MP, Asma S. Patterns of global tobacco use in young people and implications for future chronic disease burden in adults. The Lancet, 2006. 367(9512) 749-753.
 
 -   Frankenberg E and Jones NR. Self-Rated Health and Mortality: Does the Relationship Extend to a Low Income Setting? Journal of Health and Social Behavior, Volume 45, Number 4, December 2004, pp. 441-452.
-
-[Additional publications on Google Scholar](https://scholar.google.com/citations?user=6jnP2wEAAAAJ&hl=en&oi=sra)
