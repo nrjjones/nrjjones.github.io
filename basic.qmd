@@ -37,7 +37,7 @@ R and RStudio have several advantages over statistical software like Stata, SAS,
 -   Special views
 -   Pop out code
 
-# Helper packages: 
+# Helper packages:
 
 -   tidyverse - Lots of helpful data manipulation tools
 -   haven - Reads and writes SPSS, Stata, csv
