@@ -53,7 +53,7 @@
     "href": "index.html",
     "title": "UWSC Topics",
     "section": "",
-    "text": "R for Project Directors\n\nGetting started with R\nRStudio projects\nFunctions\nSample Cleaning\nReporting\nWeighting\nFile organization\n\n\n\nOther\n\n2018 DemSem Presentation: Building contextual data\nPackage of functions to work with Qualtrics\nAbout"
+    "text": "R for Project Directors\n\nGetting started with R\nRStudio projects\nSample Cleaning\nReporting\nWeighting\nFile organization\nFunctions\n\n\n\nOther\n\n2018 DemSem Presentation: Building contextual data\nPackage of functions to work with Qualtrics\nAbout"
   },
   {
     "objectID": "about.html",
@@ -61,6 +61,13 @@
     "title": "About",
     "section": "",
     "text": "Nathan R. Jones, PhD\nSenior Project Director/Data Scientist\nUniversity of Wisconsin Survey Center (UWSC)\n4418 Sterling Hall\n475 N Charter St\nMadison, WI 53706-1582\nOffice: 608-890-4724\nI am a Senior Project Director and Data Scientist at the University of Wisconsin Survey Center. My formal training is in demography and I have been a member of the Population Association of America since 1997. I have spent most of my career conducting population health research and providing methodological consultation to faculty, researchers, and students. Before moving to Wisconsin, I worked in the CDC’s Office on Smoking and Health, UCLA’s California Center for Population Research, and The RAND Corporation.\nAdditional publications on Google Scholar\nCV\n\nSelect Publications\n\nU.S. National Cancer Institute and World Health Organization. The Economics of Tobacco and Tobacco Control. National Cancer Institute Tobacco Control Monograph 21. NIH Publication No. 16-CA-8029A. Bethesda, MD: U.S. Department of Health and Human Services, National Institutes of Health, National Cancer Institute; and Geneva, CH: World Health Organization; 2016.\nDykema J, Jones NR, Piche T, Stevenson J. Surveying clinicians by web : current issues in design and administration. Eval Health Prof. 2013 Sep;36(3):352-81. doi: 10.1177/0163278713496630.\nLoConte N, Williamson A, Gayle A, Weiss J, Leal T, Cetnar J, Mohammed T, Tevaarwerk A, Jones NR. Increasing Disparity in Colorectal Cancer Incidence and Mortality among African Americans and Whites: A State’s Experience. Journal of Gastrointestinal Oncology 2011(2)2:85-92.\nLepeak L, Jones NR, Williamson A, LoConte N. Persistence in Breast Cancer Disparities between African Americans and Whites in Wisconsin. WMJ. 2011 March; 110(1):21-25.\nWarren CW, Jones NR, Peruga A, Chauvin J, Baptiste JP, Costa de Silva V, El-Awa F, Tsouros A, Rahman K, Fishburn B, Bettcher DW, Asma S. Global Youth Tobacco Surveillance, 2000–2007. MMWR Surveill Summ. 2008 Jan 25;57(1):1-28.\nWarren CW, Jones NR, Eriksen MP, Asma S. Patterns of global tobacco use in young people and implications for future chronic disease burden in adults. The Lancet, 2006. 367(9512) 749-753.\nFrankenberg E and Jones NR. Self-Rated Health and Mortality: Does the Relationship Extend to a Low Income Setting? Journal of Health and Social Behavior, Volume 45, Number 4, December 2004, pp. 441-452."
+  },
+  {
+    "objectID": "passwd.html",
+    "href": "passwd.html",
+    "title": "Password Manager",
+    "section": "",
+    "text": "LastPass\n\n\n1Password\n\n\nBitwarden"
   },
   {
     "objectID": "basic.html",
